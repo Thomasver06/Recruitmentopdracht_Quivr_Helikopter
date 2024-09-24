@@ -1,0 +1,2 @@
+als er geen instructies doorgegeven worden gaat het programma door de instructie method cases en roept het enkel de locatie method op die de locatie weergeeft. De startlocatie terug.
+we kunnen ook direct de start input terug geven maar zo kunnen we de geen tests uitvoeren.

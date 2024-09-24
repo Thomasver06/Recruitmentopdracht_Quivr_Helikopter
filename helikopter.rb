@@ -1,5 +1,5 @@
 class Helikopter
-  RICHTINGEN = ["noord", "oost", "zuid", "west"]
+  RICHTINGEN = %w(noord oost zuid west)
 
   def initialize(x, y, z, richting)
     @x = x
@@ -65,7 +65,7 @@ def check_input
   if ARGV.length == 5
     check_coordinaten = ARGV[0..2].all? { |arg| arg =~ /^-?\d+$/ }
 
-    richtingen = ["noord", "oost", "zuid", "west"]
+    richtingen = %w(noord oost zuid west)
     check_richting = richtingen.include?(ARGV[3])
 
     check_instructies = ARGV[4] =~ /^[UDVRL]+$/

@@ -1,4 +1,9 @@
 # Gemfile
-source 'https://rubygems.org'  # This is where Ruby gems are hosted
+source 'https://rubygems.org'
 
-gem 'rspec'  # Adding RSpec gem
+gem 'rspec'
+%w[rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+
+gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'main'
+end
+
