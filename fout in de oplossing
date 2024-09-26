@@ -1,0 +1,15 @@
+## Voorbeeld
+Input: 0 0 0 noord UURVVVLVVRRVD
+
+Dat wilt zeggen:
+* We beginnen op (0, 0, 0) N                        = juist
+* Ga omhoog, 2x (0, 0, 2) N                         = juist
+* Draai naar rechts (0, 0, 2) N                     = fout: (0, 0, 2) O
+* Ga 3 eenheden vooruit (3, 0, 2) N                 = fout: (3, 0, 2) 0
+* Draai naar links (3, 0, 2) N                      = juist
+* Ga 2 eenheden vooruit (3, 2, 2) N                 = juist
+* Draai twee keer naar rechts (3, 2, 2) Z           = juist
+* Ga 1 eenheid vooruit (3, 1, 2) Z                  = juist
+* Ga 1 eenheid omlaag (3, 1, 1) Z                   = juist
+
+De output voor deze input zou (3, 1, 1) richting het zuiden moeten zijn.
