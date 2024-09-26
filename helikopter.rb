@@ -66,39 +66,41 @@ def check_input
     x, y, z, richting, instructies = ARGV[0..4]
     check_input_valid(x, y, z, richting, instructies)
   else
-    puts "5 argumenten zijn nodig, #{ARGV.length} argument(en) zijn gegeven \nInput: (<x> <y> <z> <richting> <instructies>)"
-    input = gets.chomp
-    x, y, z, richting, instructies  = input.split(" ")
-    check_input_valid(x, y, z, richting, instructies)
+    puts "5 argumenten verwacht, #{ARGV.length} argument(en) gegeven."
+    get_input
   end
 end
 
 def check_input_valid(x, y, z, richting, instructies)
-  if ARGV.length == 5
-    check_coordinaten = ARGV[0..2].all? { |arg| arg =~ /^-?\d+$/ }
+  positie = [x, y, z]
+  check_positie = positie.all? { |arg| arg =~ /^-?\d+$/ }
 
-    richtingen = %w(noord oost zuid west)
-    check_richting = richtingen.include?(ARGV[3])
+  richtingen = %w(noord oost zuid west)
+  check_richting = richtingen.include?(richting)
 
-    check_instructies = ARGV[4] =~ /^[UDVRL]+$/
+  check_instructies = instructies =~ /^[UDVRL]+$/
 
-    if check_coordinaten && check_richting && check_instructies
-      return
-    else
-      puts "Input voorbeeld: helikopter 200 -5 0 west UURVVVLVVRRVD"
-      exit
-    end
+  if check_positie && check_richting && check_instructies
+    [x, y, z, richting, instructies]
   else
-    puts "Input: helikopter <x> <y> <z> <richting> <instructies>"
-    exit
+    puts "Argumenten voldoen niet aan verwachting."
+    get_input
   end
 end
 
+def get_input
+  puts "Input: ( <x> <y> <z> <richt> <instruct> )"
+  input = gets.chomp
+  if input.split(" ").length == 5
+    x, y, z, richting, instructies = input.split(" ")
+    check_input_valid(x, y, z, richting, instructies)
+  else
+    puts "5 argumenten verwacht, #{input.split(" ").length} argument(en) gegeven."
+  end
 
-check_input
+end
 
-x, y, z, riching = ARGV[0..3]
-instructies = ARGV[4]
 
-helikopter = Helikopter.new(x.to_i, y.to_i, z.to_i, riching)
+x, y, z, richting, instructies = check_input
+helikopter = Helikopter.new(x.to_i, y.to_i, z.to_i, richting)
 puts helikopter.vlieg(instructies)
