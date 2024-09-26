@@ -63,6 +63,18 @@ end
 
 def check_input
   if ARGV.length == 5
+    x, y, z, richting, instructies = ARGV[0..4]
+    check_input_valid(x, y, z, richting, instructies)
+  else
+    puts "5 argumenten zijn nodig, #{ARGV.length} argument(en) zijn gegeven \nInput: (<x> <y> <z> <richting> <instructies>)"
+    input = gets.chomp
+    x, y, z, richting, instructies  = input.split(" ")
+    check_input_valid(x, y, z, richting, instructies)
+  end
+end
+
+def check_input_valid(x, y, z, richting, instructies)
+  if ARGV.length == 5
     check_coordinaten = ARGV[0..2].all? { |arg| arg =~ /^-?\d+$/ }
 
     richtingen = %w(noord oost zuid west)
@@ -82,7 +94,9 @@ def check_input
   end
 end
 
+
 check_input
+
 x, y, z, riching = ARGV[0..3]
 instructies = ARGV[4]
 
